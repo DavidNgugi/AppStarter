@@ -6,6 +6,14 @@ color a
 :Prompts
 cls
 SETLOCAL EnableDelayedExpansion
+::Instructions
+SET "data=|===========================================================================|"  
+SET "data2=|                                                                           |"  
+SET "data3=| Avoid spaces before typing anything, do not use quotes in your input      |"  
+SET "data4=|                                                                           |"  
+SET "data5=|===========================================================================|"
+echo !data! && echo !data2! && echo !data3! && echo !data4! && echo !data5!
+
 ::Ask user to input the name of the project folder
 SET "INPUT="
 SET /P "INPUT=Input the project folder name:"
@@ -19,7 +27,7 @@ IF ERRORLEVEL 1 GOTO Prompts
 
 :SecondPrompt
 SET "PROJECT_TYPE="
-SET /P "PROJECT_TYPE=Choose Type of Project(Laravel[L], Node(N)):"
+SET /P "PROJECT_TYPE=Type L, N, I or P to Choose your Type of Project(Laravel[L], Node[N], Ionic[I], Python[P]):"
 
 :: Again Check if user inputed anything closely remote to being appropriate for our use
 IF "%PROJECT_TYPE%"=="" GOTO SecondPrompt
@@ -29,15 +37,27 @@ IF NOT DEFINED PROJECT_TYPE GOTO SecondPrompt
 IF ERRORLEVEL 1 GOTO SecondPrompt
 
 :: Check which project type the user has choosen
+IF "%PROJECT_TYPE%"=="I" GOTO InitIonicApp
+IF "%PROJECT_TYPE%"=="i" GOTO InitIonicApp
 IF "%PROJECT_TYPE%"=="L" GOTO InitLaravelApp
 IF "%PROJECT_TYPE%"=="l" GOTO InitLaravelApp
 IF "%PROJECT_TYPE%"=="N" GOTO InitNodeJsApp
 IF "%PROJECT_TYPE%"=="n" GOTO InitNodeJsApp
+IF "%PROJECT_TYPE%"=="P" GOTO InitPythonApp
+IF "%PROJECT_TYPE%"=="p" GOTO InitPythonApp
 
 :: ====================== LARAVEL START PROCEDURE ============================
 :InitLaravelApp
 cls
-echo ===================== LARAVEL APP =====================
+::Instructions
+SET "data6=|===========================================================================|"  
+SET "data7=|                                                                           |" 
+SET "data8=| LARAVEL APP                                                               |"
+SET "data9=| Avoid spaces before typing anything, do not use quotes in your input      |"  
+SET "data10=|                                                                           |"  
+SET "data11=|===========================================================================|"
+echo !data6! && echo !data7! && echo !data8! && echo !data9! && echo !data10! && echo !data11!
+
 :: Start XAMPP Control Panel First
 echo Changing directory to C:\xampp
 cd /D C:\xampp
@@ -56,11 +76,20 @@ cmd /k "php artisan serve"
 
 ::NODEJS START PROCEDURE
 :InitNodeJsApp
-echo ===================== NODEJS APP =====================
+cls
+
+:: Instructions
+SET "data12=|===========================================================================|"  
+SET "data13=|                                                                           |" 
+SET "data14=| NODEJS APP                                                                |"
+SET "data15=| Avoid spaces before typing anything, do not use quotes in your input      |"  
+SET "data16=|                                                                           |"  
+SET "data17=|===========================================================================|"
+echo !data12! && echo !data13! && echo !data14! && echo !data15! && echo !data16! && echo !data17!
 
 :ThirdPrompt
 SET "START_FILE=app.js"
-SET /P "START_FILE=Name of Start File (app.js):\n"
+SET /P "START_FILE=Name of Start File (app.js):"
 
 :: Again Check if user inputed anything closely remote to being appropriate for our use
 IF "%START_FILE%"=="" GOTO ThirdPrompt
@@ -77,6 +106,61 @@ TIMEOUT 1 /NOBREAK > NUL
 echo Attempting to initialize the App...
 TIMEOUT 2 /NOBREAK > NUL
 cmd /k "node %START_FILE%"
+
+::IONIC START PROCEDURE
+:InitIonicApp
+cls
+
+::Instructions
+SET "data18=|===========================================================================|"  
+SET "data19=|                                                                           |" 
+SET "data20=| IONIC APP                                                                 |"
+SET "data21=| Avoid spaces before typing anything, do not use quotes in your input      |"  
+SET "data22=|                                                                           |"  
+SET "data23=|===========================================================================|"
+echo !data18! && echo !data19! && echo !data20! && echo !data21! && echo !data22! && echo !data23!
+
+:: Go to the given project directory
+echo Changing directory to C:\Users\User\Documents\Github\%INPUT%
+cd /D C:\Users\User\Documents\Github\%INPUT%
+TIMEOUT 1 /NOBREAK > NUL
+::Start the Ionic app...
+echo Attempting to initialize the App...
+TIMEOUT 2 /NOBREAK > NUL
+cmd /k "ionic serve"
+
+::PYTHON START PROCEDURE
+:InitPythonApp
+cls
+
+::Instructions
+SET "data24=|===========================================================================|"  
+SET "data25=|                                                                           |" 
+SET "data26=| PYTHON APP                                                                |"
+SET "data27=| Avoid spaces before typing anything, do not use quotes in your input      |"  
+SET "data28=|                                                                           |"  
+SET "data29=|===========================================================================|"
+echo !data24! && echo !data25! && echo !data26! && echo !data27! && echo !data28! && echo !data29!
+
+:FourthPrompt
+SET "START_FILE=run.py"
+SET /P "START_FILE=Name of Start File (run.py):"
+
+:: Again Check if user inputed anything closely remote to being appropriate for our use
+IF "%START_FILE%"=="" GOTO FourthPrompt
+IF "%START_FILE%"==" " GOTO FourthPrompt
+IF "%START_FILE%"=="  " GOTO FourthPrompt
+IF NOT DEFINED START_FILE GOTO FourthPrompt
+IF ERRORLEVEL 1 GOTO FourthPrompt
+
+:: Go to the given project directory
+echo Changing directory to C:\Users\User\Documents\Github\%INPUT%
+cd /D C:\Users\User\Documents\Github\%INPUT%
+TIMEOUT 1 /NOBREAK > NUL
+::Start the Python app...
+echo Attempting to initialize the App...
+TIMEOUT 2 /NOBREAK > NUL
+cmd /k "python %START_FILE%"
 
 pause
 
