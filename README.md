@@ -1,5 +1,5 @@
 # AppStarter for Windows
-BAT script for running Ionic, Laravel, NodeJs and Python apps that are in your local GitHub folder
+Batch script for running Ionic, Laravel, NodeJs and Python apps that are in your local GitHub folder
 
 ![Initial Screen](/app.png)
 
