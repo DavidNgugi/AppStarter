@@ -9,7 +9,7 @@ Windows NT, XP, 7, 8, 8.1 or 10
 ```
 
 ### Steps in Starting an App
-1. Change the XAMMP and Github paths to match yours
+1. Change the XAMPP and Github paths to match yours
 2. Provide the name of the Project Folder
 3. Input I, L, N or P to choose the type of app (Ionic[I], Laravel[L], NodeJs[N], Python[P])
 4. If the app is an NodeJs or Python app, input the starter file (Init file). i.e hello.py, run.py, server.js, run.js, app.js or WHATEVER STARTER FILE YOU HAVE!
