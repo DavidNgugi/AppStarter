@@ -79,7 +79,7 @@ SET "data7=|                                                                    
 SET "data8=| LARAVEL APP                                                               |"
 SET "data9=| Avoid spaces before typing anything, do not use quotes in your input      |"  
 SET "data10=|                                                                           |"  
-SET "data11=|__________________________________________________________________________|"
+SET "data11=|___________________________________________________________________________|"
 echo !data6! && echo !data7! && echo !data8! && echo !data9! && echo !data10! && echo !data11!
 
 :: Start XAMPP Control Panel First
